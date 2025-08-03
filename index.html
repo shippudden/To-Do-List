@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- box icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+    <div id="editOverlay">
+        <div class="modal-content">
+            <i class='bx bx-x'></i>
+            <h2 class="display-large">Edit Task</h2>
+            <input type="text" class="edit-input" id="editInput" placeholder="Edit your task">
+            <p id="errorMsg"></p>
+            <button class="btn" id="saveBtn">Save</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="title"><i class='bx bxs-edit-alt'></i> To-Do List</h1>
+
+        <div class="search-section">
+            <input type="text" class="task-input" id="taskInput" placeholder="Enter your task">
+            <button class="btn" id="btn">Add Task</button>
+        </div>
+        <p id="paragraph"></p>
+    </div>
+
+    <div class="filter-btns">
+        <button class="filter-btn" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn" data-filter="pending">Pending</button>
+    </div>
+
+    <div class="action-btns">
+        <button class="btn secondary" id="clearCompletedBtn">Clear Completed</button>
+        <button class="btn danger" id="clearAllBtn">Clear All</button>
+    </div>
+
+    <div class="task-container" id="taskContainer"></div>
+    
+
+
+    <script src="script.js"></script>
+</body>
+</html>
