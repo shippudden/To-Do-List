@@ -197,14 +197,13 @@ Updating the DOM in sync with stored task states (especially on edit/delete/clea
 
 ## 📸 Screenshots
 
-*You can add screenshots here for your portfolio or GitHub viewers.*
-![alt text](image.png)
+![alt text](Images/preview.png)
 
 ---
 
 ## 🌐 Live Demo (optional)
 
-<video controls src="To-Do List - Google Chrome 2025-08-03 09-42-34.mp4" title="Title"></video>
+[Check out the  demo](Images/demo.mp4)
 
 ---
 
