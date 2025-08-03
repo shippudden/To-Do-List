@@ -201,9 +201,10 @@ Updating the DOM in sync with stored task states (especially on edit/delete/clea
 
 ---
 
-## 🌐 Live Demo (optional)
+## 🌐 Live Demo 
 
-[Check out the  demo](Images/demo.mp4)
+![To-Do List Demo](./Images/demo.mp4)
+[Click here to view the live To-Do List](https://shippudden.github.io/To-Do-List/)
 
 ---
 
