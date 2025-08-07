@@ -8,8 +8,25 @@ let editInput = document.getElementById('editInput')
 let saveBtn = document.getElementById('saveBtn')
 let closeBtn = document.querySelector('.bx-x')
 
+const confirmModal = document.getElementById('confirmModal')
+const confirmYes = document.getElementById('confirmYes')
+const confirmNo = document.getElementById('confirmNo')
+
 let taskBeingEdited = null;
 let currentFilter = localStorage.getItem('filter') || 'all'; // Default filter is 'all'
+
+function showConfirmDialog (callback) {
+    confirmModal.style.display = 'flex'
+
+    confirmYes.addEventListener('click', () => {
+        confirmModal.style.display = 'none'
+        callback(true)
+    })
+    confirmNo.addEventListener('click', () => {
+        confirmModal.style.display = 'none'
+        callback(false) // Let's caller know the user clicked 'Yes'
+    })
+}
 
 taskInput.focus()
 taskInput.addEventListener('keypress', (e) => {
@@ -219,10 +236,12 @@ function filterTasks() {
 }
 
 document.getElementById('clearAllBtn').addEventListener('click', () => {
-    if (confirm('Are you sure you want to clear all tasks?')) {
-        localStorage.removeItem('tasks');
-        taskContainer.innerHTML = ''; // Clear the task list
-    }
+    showConfirmDialog((confirmed) => {
+        if (confirmed) {
+            localStorage.removeItem('tasks')
+            taskContainer.innerHTML = ''
+        }
+    })
 })
 
 document.getElementById('clearCompletedBtn').addEventListener('click', () => {
