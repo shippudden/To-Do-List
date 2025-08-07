@@ -237,3 +237,55 @@ function checkCompletedStatus() {
     let hasCompletedTasks = tasks.some(task => task.completed);
     clearCompletedBtn.disabled = !hasCompletedTasks;
 }
+
+const canvas = document.getElementById('blobCanvas');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let blobs = [];
+
+function createBlob() {
+  return {
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: 60 + Math.random() * 40,
+    dx: Math.random() * 1.5 - 0.75,
+    dy: Math.random() * 1.5 - 0.75,
+    color: `hsla(${Math.random() * 360}, 70%, 70%, 0.25)`
+  };
+}
+
+// Create multiple blobs
+for (let i = 0; i < 6; i++) {
+  blobs.push(createBlob());
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  blobs.forEach(blob => {
+    blob.x += blob.dx;
+    blob.y += blob.dy;
+
+    // Bounce off edges
+    if (blob.x < 0 || blob.x > canvas.width) blob.dx *= -1;
+    if (blob.y < 0 || blob.y > canvas.height) blob.dy *= -1;
+
+    ctx.beginPath();
+    ctx.fillStyle = blob.color;
+    ctx.arc(blob.x, blob.y, blob.r, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// Resize canvas on window resize
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
